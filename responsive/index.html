@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- 
+    You can use either type selectors or classes to style your content
+        a) class approach will be more time-consuming and will require you to invent names for classes involved
+        b) selectors approach will be faster but in the long run it will be hard to match CSS rules looking at HTML
+        c) For big projects we split code into small manageable pieces and usually write classes which names
+        are scoped within this smaller piece of code.
+ -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <meta name="author" content="Chunliang Lyu" />
+    <title>John Doe - Resume</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400&display=swap');
+
+      :root {
+        --primary: #1e90ff;
+        --primary-dark: #1e9099;
+        --secondary: #1e90ff;
+
+        --background-primary: #ddd;
+        --background-secondary: #66b;
+        --background-secondary-dark: #77e;
+
+        --text-primary: #000;
+        --text-link: #44a;
+        --text-link-hover: #bbf;
+      }
+
+      body {
+        margin: 0;
+        font-family: Roboto, sans-serif;
+        color: var(--text-primary);
+        font-weight: 400;
+        font-size: 14px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin: 10px 0;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        margin: 10px 0;
+      }
+
+      h3 {
+        font-size: 1rem;
+        margin: 10px 0;
+      }
+
+      a:link,
+      a:visited {
+        color: var(--text-link);
+      }
+
+      a:hover,
+      a:active {
+        color: var(--text-link-hover);
+      }
+
+      /* Main container */
+      main {
+        display: flex;
+        flex: 1;
+      }
+
+      /* Main information - name, contact, skills */
+      main > header {
+        flex: 1;
+        background-color: var(--background-secondary);
+        padding: 0 10px;
+        max-width: 250px;
+      }
+
+      main > header > section {
+        margin: 20px 0;
+      }
+
+      main > header h2 {
+        background-color: var(--background-secondary-dark);
+        padding: 10px 10px;
+        margin: 0 -10px;
+      }
+
+      /* Detailed information - education, experience */
+      main > aside {
+        flex: 2;
+        padding: 0 20px;
+      }
+
+      main > aside > section {
+        border-bottom: 1px solid #aaa;
+      }
+
+      /* Footer */
+      footer {
+        padding: 20px;
+        margin: 20px 0 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--background-secondary-dark);
+      }
+
+      .profile-photo {
+        border-radius: 50%;
+        width: 100%;
+      }
+
+      .skill-item-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 20px;
+      }
+
+      .education-item-container {
+        display: flex;
+      }
+
+      @media screen and (max-width: 600px) {
+        body {
+          font-size: 24px;
+        }
+        main {
+          flex-direction: column;
+        }
+
+        main > header {
+          max-width: none;
+        }
+
+        picture {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .profile-photo {
+          max-width: 300px;
+        }
+
+        header {
+          text-align: center;
+        }
+
+        .skill-item-container {
+          justify-content: space-around;
+        }
+      }
+    </style>
+  </head>
+
+  <main>
+    <header>
+      <section>
+        <h1>John Doe - Resume</h1>
+        <picture>
+          <img class="profile-photo" src="./assets/images/profile-photo.png" />
+        </picture>
+        <p style="margin: 0">Web Developer</p>
+      </section>
+      <section>
+        <h2>Personal info</h2>
+        <div>
+          <h3>Phone</h3>
+          <a href="tel:+61420274159">+61420274159</a>
+        </div>
+        <div>
+          <h3>E-mail</h3>
+          <a href="mailto:john-deo@not-real-email.com"
+            >john-deo@not-real-email.com</a
+          >
+        </div>
+      </section>
+      <section>
+        <h2>Skills</h2>
+        <div class="skill-item-container">
+          <h3 class="skill-item-headline">HTML</h3>
+          <p class="skill-item-description">Intermediate</p>
+        </div>
+        <div class="skill-item-container">
+          <h3 class="skill-item-headline">CSS</h3>
+          <p class="skill-item-description">Intermediate</p>
+        </div>
+        <div class="skill-item-container">
+          <h3 class="skill-item-headline">JavaScript</h3>
+          <p class="skill-item-description">Still learning</p>
+        </div>
+      </section>
+    </header>
+
+    <aside>
+      <section>
+        <h2>Experience</h2>
+        <section>
+          <h3>Web developer</h3>
+          <p>AwesomeCo, <time>December 2021 - Current</time></p>
+          <ul>
+            <li>Creating beautiful websites with use of HTML and CSS</li>
+            <li>Following best accessibility principles</li>
+            <li>Solving problems and proposing smooth, working solutions</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h3>Receptionist</h3>
+        <p>BuildCo, <time>January 2019 - June 2021</time></p>
+        <ul>
+          <li>Creating beautiful websites with use of HTML and CSS</li>
+          <li>Following best accessibility principles</li>
+          <li>Solving problems and proposing smooth, working solutions</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Education</h2>
+        <section>
+          <h3>Institute of Data Web Development Course</h3>
+          <p>Institute of Data, <time>September 2021 - 2021</time></p>
+          <ul>
+            <li>Web development</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>React</li>
+            <li>node.js</li>
+            <li>express servers</li>
+          </ul>
+        </section>
+        <section>
+          <h3>University of Australia, <time>September 2021 - 2021</time></h3>
+          <p>Civil engineering</p>
+          <ul>
+            <li>...</li>
+            <li>...</li>
+            <li>...</li>
+          </ul>
+        </section>
+      </section>
+    </aside>
+  </main>
+  <footer>Created by John Doe, 2021</footer>
+</html>
