@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Send Mail</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script type="text/javascript">
+      const SecureToken = '3b7d9aea-a614-421c-a0a8-5ad7437ebed6';
+      const From = 'kingsley.huang@institutedata.com';
+      console.log('init');
+
+      //   init();
+      //   function init() {
+      //     for (let i = 0; i < 10; i++) {
+      //       console.log(i);
+      //     }
+      //   }
+
+      async function sendEmail(To, Subject, Body) {
+        await Email.send({
+          SecureToken,
+          To,
+          From,
+          Subject,
+          Body,
+        });
+      }
+
+      function onSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target).entries();
+        const { email, title, body } = Object.fromEntries(formData);
+        //    const email = document.querySelector("#email").value();
+        //  const title=    document.querySelector("#title").value();
+        //     document.querySelector("#body").value();
+        const sumbmitButton = document.getElementById('submitbutton');
+        sumbmitButton.setAttribute('disabled', '');
+        sendEmail(From, title, `${body} email: ${email}`).then(() => {
+          sendEmail(email, 'confirm', 'Your email is recieved'); // send a confirmation email
+          alert('email send');
+          sumbmitButton.removeAttribute('disabled');
+        }); // send email to me
+      }
+      //   function validation() {}
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="offset-3 col-6">
+          <form onsubmit="onSubmit(event)">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                value="huangkingsley@gmail.com"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" name="title" />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Messages</label
+              >
+              <textarea name="body" class="form-control"></textarea>
+            </div>
+            <button type="submit" id="submitbutton" class="btn btn-primary">
+              Submit
+            </button>
+            <button onclick="">Click</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
